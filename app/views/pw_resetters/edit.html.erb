@@ -1,0 +1,17 @@
+<h1>Password Reset</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= flash[:reset_error] %>
+    <%= form_for(:reset_info, url: pw_done_path) do |f| %>
+        <%= f.hidden_field :email, :value => params[:email]%>
+        <br/>
+        <%= f.label :"New Password" %>
+        <%= f.password_field :password, autocomplete: "off" %>
+        <br/>
+        <%= f.label :"Password Confirmation"%>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <br/>
+        <%= f.submit "Reset Password", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
