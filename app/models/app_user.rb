@@ -31,11 +31,11 @@ class AppUser < ApplicationRecord
 
   def self.update_my_account(params)
     @aim_user = AppUser.find_by(user_id: params[:user_id].to_i)
-    @aim_user[:email] = params[:email].nil? ? @aim_user[:email] : params[:email].downcase
-    @aim_user[:birthday] = params[:birthday].nil? ? @aim_user[:birthday] :
+    @aim_user[:email] = params[:email].empty? ? @aim_user[:email] : params[:email].downcase
+    @aim_user[:birthday] = params[:birthday].empty? ? @aim_user[:birthday] :
     Time.parse(params[:birthday])
-    @aim_user[:avatar] = params[:avatar].nil? ? @aim_user[:avatar] :
-    AppUser.upload_image(@aim_user[:user_id], params[:avatar], 0)
+    @aim_user[:avatar] = params[:avatar].empty? ? @aim_user[:avatar] :
+    AppUser.upload_image(@aim_user[:user_id], params[:avatar], 0)[0]
     @aim_user[:name] = params[:nickname] || @aim_user[:name]
     @aim_user[:sex] = params[:gender] || @aim_user[:sex]
     @aim_user[:education] = params[:education] || @aim_user[:education]
@@ -53,7 +53,7 @@ class AppUser < ApplicationRecord
     image_file = File.new("./app_users_images/#{user_id.to_s}/#{current_time}.jpg", "wb")
     image_file.write(Base64.decode64(file))
     image_file.close
-    "app_users_images/#{user_id}/#{current_time}.jpg"
+    ["app_users_images/#{user_id}/#{current_time}.jpg", current_time + ".jpg"]
   end
 
   def self.fetch_my_info(aim_user_id)

@@ -8,7 +8,6 @@ class AppUsersController < ApplicationController
     puts "!!!!!!!!!!!!!!!!!!!!"
 
     puts "@@@@@@@@@@@@@@@@@@@@"
-
 =begin
     #通过连google的服务器获取本地服务器ip
     local_ip = UDPSocket.open {|s| s.connect("64.233.187.99", 1); s.addr.last}
@@ -49,10 +48,28 @@ class AppUsersController < ApplicationController
   def upload_image
     #还存在照片墙缩略图问题
     count = 0
+    name_list = []
     params[:pictureWall].each do |f|
-      AppUser.upload_image(params[:user_id], f[:imageContent], count+=1)
+      #直接放？
+      temp = {}
+      temp.store(f[:name], AppUser.upload_image(params[:user_id], f[:imageContent], count+=1)[1])
+      name_list << temp
     end
-    result = {"result":"image_uploaded"}
+    result = {"result":"image_uploaded", "name_list":name_list}
+    render json: result
+  end
+
+  def fetch_my_info
+    result = AppUser.fetch_my_info(params[:user_id])
+    path = "./app_users_images/#{result[:user_id]}"
+    images = []
+    Find.find(path).each do |f|
+      if File.file?(f) && File.extname(f).eql?(".jpg")
+        images << {"#{File.basename(f)}":Base64.strict_encode64(File.read(f))}
+      else
+      end
+    end
+    result.store("images", images)
     render json: result
   end
 
