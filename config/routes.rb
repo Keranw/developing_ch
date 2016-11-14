@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 ################################################################################
   post 'app_account_manage' => 'app_users#manage_my_account'
   post 'upload_image' => 'app_users#upload_image'
-
-
-
-
+  post 'fetch_my_info' => 'app_users#fetch_my_info'
+  # 需求未定
+  get ':user_id/delete_image/' => 'app_users#delete_image'
+  post 'update_my_avatar' => 'app_users#update_my_avatar'
+  post 'auto_login' => 'app_users#auto_login'
 end

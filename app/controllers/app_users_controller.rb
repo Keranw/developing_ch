@@ -14,13 +14,13 @@ class AppUsersController < ApplicationController
 =end
 
 =begin
-    #输入目标用户的id，把照片墙的内容打包
+    #输入目标用户的id，把照片墙的内容和用户信息打包
     result = AppUser.fetch_my_info(10001)
     path = "./app_users_images/#{result[:user_id]}"
     images = []
     Find.find(path).each do |f|
+      # File.directory? // 判断当前
       if File.file?(f) && File.extname(f).eql?(".jpg")
-        #生成图片缩略图
         images << {"#{File.basename(f)}":"123123123"}
       else
       end
@@ -50,12 +50,18 @@ class AppUsersController < ApplicationController
     count = 0
     name_list = []
     params[:pictureWall].each do |f|
-      #直接放？
       temp = {}
       temp.store(f[:name], AppUser.upload_image(params[:user_id], f[:imageContent], count+=1)[1])
       name_list << temp
     end
     result = {"result":"image_uploaded", "name_list":name_list}
+    render json: result
+  end
+
+  def update_my_avatar
+    @aim_user = AppUser.find_by(user_id: params[:user_id].to_i)
+    @aim_user.update_attribute(:avatar, "app_users_images/#{params[:user_id]}/#{params[:avatar]}")
+    result = {"result":"avatar_updated" }
     render json: result
   end
 
@@ -73,9 +79,29 @@ class AppUsersController < ApplicationController
     render json: result
   end
 
-  def delete_image
+  def delete_image############################################
+    # 需要数据：用户id，删除目标，当前假定删除多张图片
+    path = "./app_users_images/#{params[:user_id]}"
+    puts params
+    Find.find(path).each do |f|
+      if File.file?(f) && File.extname(f).eql?(".jpg")
+        #删除图片
+        puts File.basename(f)
+      else
+        #跳过去不管
+      end
+    end
+    result = {"aaa":"123" }
+    render json: result
   end
 
-  def update_my_avatar
+  def auto_login
+    @aim_user = AppUser.find_by(user_id: params[:user_id])
+    if params[:token] && params[:token].eql?(@aim_user[:token])
+      result = {"result":true}
+    else
+      result = {"result":false}
+    end
+    render json: result
   end
 end
