@@ -9,7 +9,7 @@ class EmailAccountUsersController < ApplicationController
       activation_url = 'http://'+ $host +'/account_activations/' + created_result[:token] +
        '/edit?email=' + params[:email].downcase.split('@')[0] + '%40' + params[:email].downcase.split('@')[1]
       EmailMailer.welcome_email(activation_url, params[:email].downcase.downcase).deliver_later
-      result = {"createuser":"user_created", "created_id":created_result[:id].to_s}
+      result = {"createuser":"user_created", "created_id":created_result[:id].to_s, "token":created_result[:acc_token]}
     end
     render json: result
   end

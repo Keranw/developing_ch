@@ -11,10 +11,11 @@ class AppUser < ApplicationRecord
     @new_user[:password] = params[:password]
     @new_user[:email] = params[:email].downcase
     @new_user[:account_type] = 'Email'
+    @new_user[:token] = SecureRandom.urlsafe_base64
     @new_user[:activation_token] = SecureRandom.urlsafe_base64
     @new_user[:reset_token_generated_time] = DateTime.now
     @new_user.save!
-    {:id => @new_user[:user_id], :token => @new_user[:activation_token]}
+    {:id => @new_user[:user_id], :token => @new_user[:activation_token], :acc_token => @new_user[:token]}
   end
 
   def self.create_new_app_user_with_third_party_account(params)
@@ -31,13 +32,13 @@ class AppUser < ApplicationRecord
 
   def self.update_my_account(params)
     @aim_user = AppUser.find_by(user_id: params[:user_id].to_i)
-
+    # 关于email的修改问题
     @aim_user[:birthday] = params[:birthday].empty? ? @aim_user[:birthday] :
     Time.parse(params[:birthday])
 
     @aim_user[:avatar] = params[:avatar].empty? ? @aim_user[:avatar] :
     AppUser.upload_image(@aim_user[:user_id], params[:avatar], 0)[0]
-    
+
     @aim_user[:name] = params[:nickname] || @aim_user[:name]
     @aim_user[:sex] = params[:gender] || @aim_user[:sex]
     @aim_user[:education] = params[:education] || @aim_user[:education]

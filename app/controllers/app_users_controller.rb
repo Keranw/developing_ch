@@ -69,18 +69,22 @@ class AppUsersController < ApplicationController
     result = AppUser.fetch_my_info(params[:user_id])
     path = "./app_users_images/#{result[:user_id]}"
     images = []
-    Find.find(path).each do |f|
-      if File.file?(f) && File.extname(f).eql?(".jpg")
-        images << {"#{File.basename(f)}":Base64.strict_encode64(File.read(f))}
-      else
+    if File.directory?(path)
+      Find.find(path).each do |f|
+        if File.file?(f) && File.extname(f).eql?(".jpg")
+          images << {"#{File.basename(f)}":Base64.strict_encode64(File.read(f))}
+        else
+        end
       end
+      result.store("images", images)
+    else
     end
-    result.store("images", images)
     render json: result
   end
 
-  def delete_image############################################
+  def delete_image ############################################
     # 需要数据：用户id，删除目标，当前假定删除多张图片
+    # 目录不存在的问题
     path = "./app_users_images/#{params[:user_id]}"
     puts params
     Find.find(path).each do |f|
@@ -91,7 +95,7 @@ class AppUsersController < ApplicationController
         #跳过去不管
       end
     end
-    result = {"aaa":"123" }
+    result = {"aaa":"123"}
     render json: result
   end
 
