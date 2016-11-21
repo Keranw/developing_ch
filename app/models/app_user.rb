@@ -1,5 +1,5 @@
 class AppUser < ApplicationRecord
-
+#########
   def self.account_exist(test_account_name)
     AppUser.exists?(account_name: test_account_name)
   end
@@ -7,21 +7,21 @@ class AppUser < ApplicationRecord
   def self.create_new_app_user_with_email(params)
     @new_user = AppUser.new
     @new_user[:user_id] = AppUser.maximum(:id).to_i.next + 10000
-    @new_user[:account_name] = params[:email].downcase
+    @new_user[:account_name] = params[:email]
     @new_user[:password] = params[:password]
-    @new_user[:email] = params[:email].downcase
+    @new_user[:email] = @new_user[:account_name]
     @new_user[:account_type] = 'Email'
     @new_user[:token] = SecureRandom.urlsafe_base64
     @new_user[:activation_token] = SecureRandom.urlsafe_base64
     @new_user[:reset_token_generated_time] = DateTime.now
     @new_user.save!
-    {:id => @new_user[:user_id], :token => @new_user[:activation_token], :acc_token => @new_user[:token]}
+    {:id => @new_user[:user_id], :token => @new_user[:token], :act_token => @new_user[:activation_token]}
   end
 
   def self.create_new_app_user_with_third_party_account(params)
     @new_user = AppUser.new
     @new_user[:user_id] = AppUser.maximum(:id).to_i.next + 10000
-    @new_user[:account_name] = params[:userID]
+    @new_user[:account_name] = params[:user_id]
     @new_user[:token] = params[:token]
     @new_user[:email] = params[:email]
     @new_user[:account_type] = params[:source]

@@ -38,10 +38,34 @@ class AppUsersController < ApplicationController
     puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
   end
 ###############################################################################
+  def auto_login
+    # params: user_id:int, token:string
+    @aim_user = AppUser.find_by(user_id: params[:user_id])
+    if !@aim_user[:token].eql?(params[:token])
+      result = {"result":false, "error":"token_not_valid"}
+    elsif @aim_user[:name].empty?
+      result = {"result":false, "error":"profile_not_complete"}
+    else
+      result = {"result":true, "error":""}
+    end
+    render json: result
+  end
+
+  def check_nickname_exist
+    # params: nickname
+    if !AppUser.exists?(name: params[:nickname])
+      result = {"result": true, "error":""}
+    else
+      result = {"result": false, "error":"nickname_exists"}
+    end
+    render json: result
+  end
+
+
 
   def manage_my_account
     AppUser.update_my_account params
-    result = {"result":"info_updated"}
+    result = {"result":true, "error":""}
     render json: result
   end
 
@@ -96,16 +120,6 @@ class AppUsersController < ApplicationController
       end
     end
     result = {"aaa":"123"}
-    render json: result
-  end
-
-  def auto_login
-    @aim_user = AppUser.find_by(user_id: params[:user_id])
-    if params[:token] && params[:token].eql?(@aim_user[:token])
-      result = {"result":true}
-    else
-      result = {"result":false}
-    end
     render json: result
   end
 end

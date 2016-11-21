@@ -26,9 +26,12 @@ class CreateAppUsers < ActiveRecord::Migration[5.0]
       t.string :activation_token
       t.string :reset_token
       t.datetime :reset_token_generated_time
+
       t.timestamps
     end
+    #涉及到对话查找问题的算法
     add_index :app_users, :user_id, unique: true
+    #add_index :app_users, :name, unique: true
     #add_index :app_users, :account_name, unique: true
   end
 end

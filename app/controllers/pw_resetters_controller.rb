@@ -1,5 +1,6 @@
 class PwResettersController < ApplicationController
   def edit
+    #params email:string, reset_token:string
     @aim_user = AppUser.find_by(account_name: params[:email])
     if @aim_user && params[:id].eql?(@aim_user[:reset_token]) && @aim_user[:reset_token_generated_time] > DateTime.now
     else
@@ -9,6 +10,7 @@ class PwResettersController < ApplicationController
 
 ###############################################################
   def done
+    #params reset_info:hash
     @aim_user = AppUser.find_by(account_name: params[:reset_info][:email])
     reset_url = 'http://'+ $host +'/pw_resetters/' + @aim_user[:reset_token] +
      '/edit?email=' + @aim_user[:account_name].split('@')[0] + '%40' + @aim_user[:account_name].split('@')[1]
