@@ -1,5 +1,6 @@
 class AccountActivationsController < ApplicationController
   skip_before_filter :verify_authenticity_token
+  #激活功能暂时被阉割
   def activate
     # params email(account_name):string activation_token:string
     @aim_user = AppUser.find_by(account_name: params[:email])

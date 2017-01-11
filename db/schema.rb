@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020005026) do
+ActiveRecord::Schema.define(version: 20170109231006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,28 +19,41 @@ ActiveRecord::Schema.define(version: 20161020005026) do
     t.integer  "user_id"
     t.string   "account_name"
     t.string   "password"
-    t.string   "email",                      default: ""
     t.string   "account_type"
     t.string   "token"
+    t.string   "reset_token"
+    t.datetime "reset_token_generated_time"
     t.string   "name",                       default: ""
     t.date     "birthday"
-    t.string   "sex",                        default: ""
+    t.integer  "sex"
     t.string   "avatar",                     default: ""
-    t.string   "education",                  default: ""
+    t.string   "avatar_frame",               default: ""
+    t.integer  "avatar_count",               default: 0
+    t.integer  "orientation"
+    t.string   "email",                      default: ""
     t.string   "school",                     default: ""
     t.string   "language",                   default: ""
-    t.string   "profession",                 default: ""
-    t.string   "hobby",                      default: ""
+    t.string   "working_area",               default: ""
+    t.integer  "hobby",                      default: [],                 array: true
     t.string   "signature",                  default: ""
     t.boolean  "is_vip",                     default: false
     t.date     "vip_purchase_date"
-    t.boolean  "activated",                  default: false
-    t.string   "activation_token"
-    t.string   "reset_token"
-    t.datetime "reset_token_generated_time"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.index ["user_id"], name: "index_app_users_on_user_id", unique: true, using: :btree
+  end
+
+  create_table "pairing_infos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "postcode"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "saw_me",     default: [],              array: true
+    t.integer  "like",       default: 0
+    t.integer  "dislike",    default: 0
+    t.integer  "like_list",  default: [],              array: true
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
