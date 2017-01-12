@@ -9,6 +9,11 @@ class AppUsersController < ApplicationController
     puts "@@@@@@@@@@@@@@@@@@@@"
 
 =begin
+    #查询时同时加载其关联元组
+    temp = PairingInfo.includes(:app_user).first()
+=end
+
+=begin
     #通过连google的服务器，动态获取服务器自身ip
     local_ip = UDPSocket.open {|s| s.connect("64.233.187.99", 1); s.addr.last}
 =end
@@ -81,7 +86,7 @@ class AppUsersController < ApplicationController
     #         first_frame:string, first_frame_format:string]
     image_count = 0
     #name_list = []
-    #名字重复覆盖 （如果仅仅检查，重复后还是要改）
+    #名字重复覆盖（如果仅仅检查，重复后还是要改）
     params[:images].each do |f|
       image_count += 1
       AppUser.upload_image(image_count, params[:user_id], f[:first_frame],

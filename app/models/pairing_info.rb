@@ -4,7 +4,7 @@ class PairingInfo < ApplicationRecord
   def self.return_profile_without_gps(user_id)
     result = []
     @current_user = AppUser.find_by(user_id: user_id.to_i)
-    temp_list = AppUser.order("updated_at desc").to_a
+    temp_list = AppUser.where("birthday is not null").order("updated_at desc").to_a
     temp_list.delete(@current_user)
     #.limit(20)
     temp_list.each do |f|
@@ -41,7 +41,8 @@ class PairingInfo < ApplicationRecord
     end
     if result.length < 20
       #直接驻扎SQL语句
-      temp_list_2 = PairingInfo.where("postcode < (#{user_postcode}+5) AND postcode > (#{user_postcode}-5)")
+      #temp_list_2 = PairingInfo.where("postcode < (#{user_postcode}+5) AND postcode > (#{user_postcode}-5)")
+      temp_list_2 = PairingInfo.order("updated_at desc").to_a
       temp_list = temp_list_2 - temp_list_1
       temp_list.each do |f|
         if !f[:met_me].include?(@current_user[:user_id]) &&
@@ -77,9 +78,11 @@ class PairingInfo < ApplicationRecord
 #################################################################
   def self.update_pair_result(user_id, aim_id, result)
     @aim_pairing_info = PairingInfo.find_by(user_id: aim_id)
+    @aim_pairing_info[:met_me].push(user_id)
+    #模拟器不分布尔和字符串
     if result == true || result == "true"
-      if !@aim_pairing_info[:like_list].include?(user_id.to_i)
-        @aim_pairing_info[:like] += 1
+      @aim_pairing_info[:like] += 1
+      if !@aim_pairing_info[:like_list].include?(user_id)
         @aim_pairing_info[:like_list].push(user_id)
       end
     else

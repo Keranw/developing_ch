@@ -14,12 +14,7 @@ class AppUser < ApplicationRecord
     #@new_user[:activation_token] = SecureRandom.urlsafe_base64
     @new_user[:reset_token_generated_time] = DateTime.now
     @new_user.save!
-
-    @new_pairing_info = PairingInfo.new
-    @new_pairing_info[:app_user_id] = @new_user[:id]
-    @new_pairing_info[:user_id] = @new_user[:user_id]
-    @new_pairing_info.save!
-
+    # 匹配信息表移出
     {:id => @new_user[:user_id], :token => @new_user[:token], :act_token => @new_user[:activation_token]}
   end
 
@@ -32,12 +27,7 @@ class AppUser < ApplicationRecord
     @new_user[:account_type] = params[:source]
     #@new_user[:activated] = true
     @new_user.save!
-
-    @new_pairing_info = PairingInfo.new
-    @new_pairing_info[:app_user_id] = @new_user[:id]
-    @new_pairing_info[:user_id] = @new_user[:user_id]
-    @new_pairing_info.save!
-
+    # 匹配信息表移出
     @new_user[:user_id]
   end
 
@@ -48,7 +38,7 @@ class AppUser < ApplicationRecord
     @aim_user[:sex] = params[:sex]
     @aim_user[:not_interest] = params[:sex]
     image_count = 0
-    params[images].each do |f|
+    params[:images].each do |f|
       image_count += 1
       AppUser.upload_image(image_count, params[:user_id], f[:first_frame],
         f[:first_frame_format], f[:content], f[:content_format])
@@ -58,6 +48,11 @@ class AppUser < ApplicationRecord
     @aim_user[:avatar_frame] = temp[0] # 静图
     @aim_user[:avatar] = temp[1] # 动图
     @aim_user.save!
+    #匹配信息表移入
+    @new_pairing_info = PairingInfo.new
+    @new_pairing_info[:app_user_id] = @aim_user[:id]
+    @new_pairing_info[:user_id] = @aim_user[:user_id]
+    @new_pairing_info.save!
   end
 
   def self.upload_image(count, user_id, image_bits, image_format, video_bits, video_format)
@@ -128,7 +123,5 @@ class AppUser < ApplicationRecord
   end
 
   def self.update_my_avatar
-
   end
-
 end
