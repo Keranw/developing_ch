@@ -75,6 +75,7 @@ class AppUser < ApplicationRecord
   end
 ################################################################################
   def self.fetch_my_info(aim_user_id)
+    #收集当前用户的静态数据，在控制器中取出文件夹里面的数据
     result = {}
     @aim_user = AppUser.find_by(user_id: aim_user_id)
     result[:user_id] = aim_user_id

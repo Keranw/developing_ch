@@ -21,7 +21,7 @@ class AppUsersController < ApplicationController
 =begin
     #输入目标用户的id，把照片墙的内容和用户信息打包
     result = AppUser.fetch_my_info(10001)
-    path = "./app_users_images/#{result[:user_id]}"
+    path = "./uploaded_data/avatars/#{result[:user_id]}"
     images = []
     Find.find(path).each do |f|
       # File.directory? // 判断当前
@@ -100,7 +100,9 @@ class AppUsersController < ApplicationController
   end
 
 #####改项目######################################################################
+  #存文件的路径已被改
   def fetch_my_info
+    # params: user_id:int
     result = AppUser.fetch_my_info(params[:user_id])
     path = "./app_users_images/#{result[:user_id]}"
     images = []
@@ -124,6 +126,7 @@ class AppUsersController < ApplicationController
     render json: result
   end
 
+  #设置某张图片为头像
   def update_my_avatar
     @aim_user = AppUser.find_by(user_id: params[:user_id].to_i)
     @aim_user.update_attribute(:avatar, "app_users_images/#{params[:user_id]}/#{params[:avatar]}")
@@ -131,6 +134,7 @@ class AppUsersController < ApplicationController
     render json: result
   end
 
+  #只能删除第三类图片
   def delete_image
     # 需要数据：用户id，删除目标，当前假定删除多张图片
     # 目录不存在的问题
