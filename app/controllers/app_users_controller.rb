@@ -1,7 +1,5 @@
 class AppUsersController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  require 'find'
-  require 'socket'
 
   #[ROOT]
   def home
@@ -9,12 +7,18 @@ class AppUsersController < ApplicationController
     puts "@@@@@@@@@@@@@@@@@@@@"
 
 =begin
+    #格式化输出JSON
+    require 'json'
+    puts JSON.pretty_generate(result)
+=end
+
+=begin
     #查询时同时加载其关联元组
     temp = PairingInfo.includes(:app_user).first()
 =end
 
 =begin
-    #通过连google的服务器，动态获取服务器自身ip
+    #通过连google的服务器，动态获取服务器自身ip, 也可以通过域名来解决相应的问题
     local_ip = UDPSocket.open {|s| s.connect("64.233.187.99", 1); s.addr.last}
 =end
 
@@ -33,15 +37,9 @@ class AppUsersController < ApplicationController
     result.store("images", images)
 =end
   end
-
-  def experiment
-    puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-    puts params.inspect
-    puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-  end
 ###############################################################################
   def auto_login
-    # params: user_id:int, token:string
+    # params: user_id:int, token:string, device_token:string
     # 用过用户id来锁定用户
     @aim_user = AppUser.find_by(user_id: params[:user_id])
     if !@aim_user
@@ -51,6 +49,7 @@ class AppUsersController < ApplicationController
     elsif @aim_user[:name].empty?
       result = {"result":false, "error":1}
     else
+      @aim_user.update_attribute(:device_token, params[:device_token])
       result = {"result":true, "error":""}
     end
     render json: result
@@ -68,7 +67,7 @@ class AppUsersController < ApplicationController
 
   def user_profile_complete
     # params: user_id:int nickname:string birthday:string sex:int
-    #         avatar:string avatar_format:string first_frame:string
+    #         avatar:string avatar_format:string first_frame:string,
     #         first_frame_format:string images:[content:string,
     #         content_format:string, first_frame:string,
     #         first_frame_format:string]
@@ -82,11 +81,12 @@ class AppUsersController < ApplicationController
   end
 
   def upload_image
+    # 上传多张第三类图片
     # params: user_id:int images:[content:string, content_format:string,
     #         first_frame:string, first_frame_format:string]
     image_count = 0
     #name_list = []
-    #名字重复覆盖（如果仅仅检查，重复后还是要改）
+    # 名字重复覆盖（如果仅仅检查，重复后还是要改）
     params[:images].each do |f|
       image_count += 1
       AppUser.upload_image(image_count, params[:user_id], f[:first_frame],
@@ -99,12 +99,10 @@ class AppUsersController < ApplicationController
     render json: result
   end
 
-#####改项目######################################################################
-  #存文件的路径已被改
   def fetch_my_info
     # params: user_id:int
     result = AppUser.fetch_my_info(params[:user_id])
-    path = "./app_users_images/#{result[:user_id]}"
+=begin
     images = []
     if File.directory?(path)
       Find.find(path).each do |f|
@@ -117,38 +115,50 @@ class AppUsersController < ApplicationController
       result.store("images", images)
     else
     end
+=end
     render json: result
   end
 
   def manage_my_account
+    # params language:string school:string profession:string hobby:int[]
+    #        signature:string
     AppUser.update_my_account params
     result = {"result":true, "error":""}
     render json: result
   end
 
-  #设置某张图片为头像
   def update_my_avatar
-    @aim_user = AppUser.find_by(user_id: params[:user_id].to_i)
-    @aim_user.update_attribute(:avatar, "app_users_images/#{params[:user_id]}/#{params[:avatar]}")
-    result = {"result":"avatar_updated" }
+    # params user_id:int avatar_name:string
+    AppUser.update_my_avatar(params[:user_id], params[:avatar_name]+".mp4",
+            params[:avatar_name] + ".jpg")
+    result = {"result":true, "error":""}
     render json: result
   end
 
-  #只能删除第三类图片
+  def fetch_my_picture_wall
+    # params user_id:int
+    result = AppUser.fetch_my_picture_wall(params[:user_id])
+    render json: result
+  end
+
+  def fetch_the_dynamic_image
+    # params user_id:int image_name:string
+    result = AppUser.fetch_the_dynamic_image(params[:user_id], params[:image_name])
+    render json: {image:result}
+  end
+
+  def update_my_rest_five
+    #params user_id rest_five_images:string[]
+    @aim_pairing_info = PairingInfo.find_by(user_id:params[:user_id])
+    @aim_pairing_info.update_attribute(:rest_five, params[:rest_five_images])
+    result = {"result":true, "error":""}
+    render json: result
+  end
+
   def delete_image
-    # 需要数据：用户id，删除目标，当前假定删除多张图片
-    # 目录不存在的问题
-    path = "./app_users_images/#{params[:user_id]}"
-    puts params
-    Find.find(path).each do |f|
-      if File.file?(f) && File.extname(f).eql?(".jpg")
-        #删除图片
-        puts File.basename(f)
-      else
-        #跳过去不管
-      end
-    end
-    result = {"aaa":"123"}
+    # params user_id:int image_names:string[]
+    AppUser.delete_images(params[:user_id], params[:image_names])
+    result = {"result":true, "error":""}
     render json: result
   end
 end

@@ -4,7 +4,7 @@ class EmailAccountUsersController < ApplicationController
   def email_account_sign_up
     # params email:string, password:string
     params[:email] = params[:email].downcase
-    # B
+    ## B
     if AppUser.exists?(account_name: params[:email])
       result = {"result":false, "error":1, "user_id":"", "token":""}
     else
@@ -21,8 +21,9 @@ class EmailAccountUsersController < ApplicationController
   end
 
   def email_account_login
-    # params email:string, password:string
+    # params email:string, password:string, device_token:string
     # 通过用户注册时候的email来锁定用户，可由唯一的昵称代替
+    ## B
     @aim_user = AppUser.find_by(account_name:params[:email].downcase)
     if !@aim_user
       result = {"result":false, "token":"", "user_id":"", "error":1}
@@ -33,6 +34,7 @@ class EmailAccountUsersController < ApplicationController
       result = {"result":false, "token":@aim_user[:token], "user_id":@aim_user[:user_id], "error":2}
     else
       @aim_user.update_attribute(:token, SecureRandom.urlsafe_base64)
+      @aim_user.update_attribute(:device_token, params[:device_token])
       result = {"result":true, "token":@aim_user[:token], "user_id":@aim_user[:user_id], "error":""}
     end
     render json: result

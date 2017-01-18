@@ -3,16 +3,19 @@ class PairingInfo < ApplicationRecord
 
   def self.return_profile_without_gps(user_id)
     result = []
-    @current_user = AppUser.find_by(user_id: user_id.to_i)
+    @current_user = AppUser.includes(:pairing_info).find_by(user_id: user_id.to_i)
     temp_list = AppUser.where("birthday is not null").order("updated_at desc").to_a
     temp_list.delete(@current_user)
     #.limit(20)
-    temp_list.each do |f|
-      if !f.pairing_info[:met_me].include?(@current_user[:user_id]) &&
-        !f[:sex].eql?(@current_user[:not_interest])
-        result.push(PairingInfo.assemble_profile_json_without_gps(f))
+    if !temp_list.empty?
+      temp_list.each do |f|
+        if !f.pairing_info[:met_me].include?(@current_user[:user_id]) &&
+          !f[:sex].eql?(@current_user[:not_interest]) &&
+          !@current_user.pairing_info[:friend_list].include?(f[:user_id])
+          result.push(PairingInfo.assemble_profile_json_without_gps(f))
+        end
+        break if result.length > 19
       end
-      break if result.length > 19
     end
     result
   end
@@ -29,27 +32,34 @@ class PairingInfo < ApplicationRecord
 
   def self.return_profile_with_gps(user_id, user_postcode)
     result = []
-    @current_user = AppUser.find_by(user_id: user_id.to_i)
+    @current_user = AppUser.includes(:pairing_info).find_by(user_id: user_id.to_i)
     temp_list_1 = PairingInfo.where(:postcode => user_postcode.to_i).to_a
+    #
     temp_list = temp_list_1 - [@current_user.pairing_info]
-    temp_list.each do |f|
-      if !f[:met_me].include?(@current_user[:user_id]) &&
-        !f.app_user[:sex].eql?(@current_user[:not_interest])
-        result.push(PairingInfo.assemble_profile_json_with_gps(f.app_user, f))
+    if !temp_list.empty?
+      temp_list.each do |f|
+        if !f[:met_me].include?(@current_user[:user_id]) &&
+          !f.app_user[:sex].eql?(@current_user[:not_interest]) &&
+          !@current_user.pairing_info[:friend_list].include?(f[:user_id])
+          result.push(PairingInfo.assemble_profile_json_with_gps(f.app_user, f))
+        end
+        break if result.length > 19
       end
-      break if result.length > 19
     end
     if result.length < 20
       #直接驻扎SQL语句
       #temp_list_2 = PairingInfo.where("postcode < (#{user_postcode}+5) AND postcode > (#{user_postcode}-5)")
       temp_list_2 = PairingInfo.order("updated_at desc").to_a
       temp_list = temp_list_2 - temp_list_1
-      temp_list.each do |f|
-        if !f[:met_me].include?(@current_user[:user_id]) &&
-          !f.app_user[:sex].eql?(@current_user[:not_interest])
-          result.push(PairingInfo.assemble_profile_json_with_gps(f.app_user, f))
+      if !temp_list.empty?
+        temp_list.each do |f|
+          if !f[:met_me].include?(@current_user[:user_id]) &&
+            !f.app_user[:sex].eql?(@current_user[:not_interest]) &&
+            !@current_user.pairing_info[:friend_list].include?(f[:user_id])
+            result.push(PairingInfo.assemble_profile_json_with_gps(f.app_user, f))
+          end
+          break if result.length > 19
         end
-        break if result.length > 19
       end
     end
     result
@@ -81,11 +91,20 @@ class PairingInfo < ApplicationRecord
     #模拟器不分布尔和字符串
     if result == true || result == "true"
       @aim_pairing_info[:like] += 1
-      # 如果第一次见，加入列表
       if !@aim_pairing_info[:like_list].include?(user_id)
+        # 目标还没喜欢我
         @aim_pairing_info[:like_list].push(user_id)
+      else
+        # 目标已经喜欢过我了
+        @my_pairing_info = PairingInfo.find_by(user_id: user_id)
+        @my_pairing_info[:friend_list].push(aim_id)
+        @my_pairing_info.save!
+        ## 通过推送服务，向自己推送加好友确认
+        MessageTemp.create(from_id:aim_id, to_id:user_id, msg_type:3, content:"")
+        @aim_pairing_info[:friend_list].push(user_id)
+        ## 通过推送服务，向对方推送加好友确认
+        MessageTemp.create(from_id:user_id, to_id:aim_id, msg_type:3, content:"")
       end
-      # 如果第二次见，互加好友
     else
       @aim_pairing_info[:dislike] += 1
     end
@@ -95,18 +114,20 @@ class PairingInfo < ApplicationRecord
   def self.update_like_result(user_id, aim_id, result)
     @my_pairing_info = PairingInfo.find_by(user_id: user_id)
     @my_pairing_info[:like_list].delete(aim_id.to_i)
-    puts "_________________-"
-    puts @my_pairing_info[:like_list]
-    puts "___________________"
-    @my_pairing_info.save!
     @aim_pairing_info = PairingInfo.find_by(user_id: aim_id)
-    #模拟器不分布尔和字符串
+    ##模拟器不分布尔和字符串
     if result == true || result == "true"
       @aim_pairing_info[:like] += 1
-      # 互加好友机制
+      @my_pairing_info[:friend_list].push(aim_id)
+      ## 通过推送服务，向自己推送加好友确认
+      MessageTemp.create(from_id:aim_id, to_id:user_id, msg_type:3, content:"")
+      @aim_pairing_info[:friend_list].push(user_id)
+      ## 通过推送服务，向目标推送加好友确认
+      MessageTemp.create(from_id:user_id, to_id:aim_id, msg_type:3, content:"")
     else
       @aim_pairing_info[:dislike] += 1
     end
+    @my_pairing_info.save!
     @aim_pairing_info.save!
   end
 
@@ -146,6 +167,21 @@ class PairingInfo < ApplicationRecord
     result[:first_frame] = Base64.strict_encode64(File.read(image_path))
     result
   end
-
-  #设定某张图片为五张
+################################################################################
+  def self.get_friend_list(user_id)
+    result = []
+    #获取索引
+    @aim_pairing_info = PairingInfo.find_by(user_id:user_id)
+    @aim_pairing_info[:friend_list].each do |f|
+      temp = {}
+      #通过索引查询
+      @temp_user = AppUser.find_by(user_id:f)
+      temp[:friend_id] = f
+      temp[:friend_name] = @temp_user[:name]
+      temp[:friend_profile] = Base64.strict_encode64(File.read(@temp_user[:avatar_frame]))
+      temp[:friend_profile_name] = @temp_user[:avatar_frame].split('/').last
+      result << temp
+    end
+    result
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109231006) do
+ActiveRecord::Schema.define(version: 20170118001957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170109231006) do
     t.string   "avatar",                     default: ""
     t.string   "avatar_frame",               default: ""
     t.integer  "avatar_count",               default: 0
-    t.integer  "orientation"
+    t.integer  "not_interest"
     t.string   "email",                      default: ""
     t.string   "school",                     default: ""
     t.string   "language",                   default: ""
@@ -40,7 +40,18 @@ ActiveRecord::Schema.define(version: 20170109231006) do
     t.date     "vip_purchase_date"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
+    t.string   "device_token"
     t.index ["user_id"], name: "index_app_users_on_user_id", unique: true, using: :btree
+  end
+
+  create_table "message_temps", force: :cascade do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.integer  "type"
+    t.string   "content"
+    t.integer  "time_interval"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "pairing_infos", force: :cascade do |t|
@@ -48,12 +59,15 @@ ActiveRecord::Schema.define(version: 20170109231006) do
     t.integer  "postcode"
     t.float    "longitude"
     t.float    "latitude"
-    t.integer  "saw_me",     default: [],              array: true
-    t.integer  "like",       default: 0
-    t.integer  "dislike",    default: 0
-    t.integer  "like_list",  default: [],              array: true
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "met_me",      default: [],              array: true
+    t.integer  "like",        default: 0
+    t.integer  "dislike",     default: 0
+    t.integer  "like_list",   default: [],              array: true
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "app_user_id"
+    t.string   "rest_five",   default: [],              array: true
+    t.integer  "friend_list", default: [],              array: true
   end
 
 end

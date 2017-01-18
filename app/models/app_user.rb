@@ -8,11 +8,12 @@ class AppUser < ApplicationRecord
     @new_user[:account_name] = params[:email]
     @new_user[:account_type] = 'Email'
     @new_user[:password] = params[:password]
-    #用户更新用于联系的email
+    #用户更新用于联系的email，冗余？
     @new_user[:email] = @new_user[:account_name]
     @new_user[:token] = SecureRandom.urlsafe_base64
     #@new_user[:activation_token] = SecureRandom.urlsafe_base64
     @new_user[:reset_token_generated_time] = DateTime.now
+    ## B
     @new_user.save!
     # 匹配信息表移出
     {:id => @new_user[:user_id], :token => @new_user[:token], :act_token => @new_user[:activation_token]}
@@ -25,7 +26,8 @@ class AppUser < ApplicationRecord
     @new_user[:token] = params[:token]
     @new_user[:email] = params[:email]
     @new_user[:account_type] = params[:source]
-    #@new_user[:activated] = true
+    # @new_user[:activated] = true
+    ## B
     @new_user.save!
     # 匹配信息表移出
     @new_user[:user_id]
@@ -73,56 +75,98 @@ class AppUser < ApplicationRecord
     file.write(Base64.decode64(content))
     file.close
   end
-################################################################################
+
   def self.fetch_my_info(aim_user_id)
-    #收集当前用户的静态数据，在控制器中取出文件夹里面的数据
     result = {}
-    @aim_user = AppUser.find_by(user_id: aim_user_id)
+    @aim_user = AppUser.includes(:pairing_info).find_by(user_id: aim_user_id)
     result[:user_id] = aim_user_id
-    result[:account_name] = @aim_user[:account_name]
-    result[:account_type] = @aim_user[:account_type]
-    result[:email] = @aim_user[:email]
-    result[:name] = @aim_user[:name]
-    result[:birthday] = @aim_user[:birthday]
-    result[:sex] = @aim_user[:sex]
-    result[:avatar] = @aim_user[:avatar]
-    result[:education] = @aim_user[:education]
+    #result[:account_name] = @aim_user[:account_name]
+    #result[:account_type] = @aim_user[:account_type]
+    #result[:email] = @aim_user[:email]
+    result[:nickname] = @aim_user[:name]
+    #result[:birthday] = @aim_user[:birthday]
+    #result[:sex] = @aim_user[:sex]
+    #result[:avatar] = @aim_user[:avatar]
+    #result[:education] = @aim_user[:education]
+    result[:first_frame] = Base64.strict_encode64(File.read(@aim_user[:avatar_frame]))
+    result[:first_frame_name] = @aim_user[:avatar_frame].split('/').last
     result[:school] = @aim_user[:school]
     result[:language] = @aim_user[:language]
-    result[:profession] = @aim_user[:profession]
+    result[:profession] = @aim_user[:working_area]
     result[:hobby] = @aim_user[:hobby]
     result[:signature] = @aim_user[:signature]
-    result[:is_vip] = @aim_user[:is_vip]
-    result[:vip_purchase_date] = @aim_user[:vip_purchase_date]
-    result[:activated] = @aim_user[:activated]
+    result[:likes] = @aim_user.pairing_info[:like]
+    #result[:is_vip] = @aim_user[:is_vip]
+    #result[:vip_purchase_date] = @aim_user[:vip_purchase_date]
+    #result[:activated] = @aim_user[:activated]
     return result
   end
 
   def self.update_my_account(params)
     @aim_user = AppUser.find_by(user_id: params[:user_id])
-
-    @aim_user[:name] = params[:nickname] || @aim_user[:name]
-    @aim_user[:birthday] = params[:birthday].empty? ? @aim_user[:birthday] :
-    Time.parse(params[:birthday])
-    @aim_user[:sex] = params[:sex] || @aim_user[:sex]
-    @aim_user[:orientation] = params[:orientation] || @aim_user[:orientation]
-
-    if params[:avatar].empty?||params[:first_frame].empty?
-    else
-      temp = AppUser.upload_image(params[:user_id], params[:first_frame],
-        params[:first_frame_format], params[:avatar], params[:avatar_format])
-      @aim_user[:avatar_frame] = temp[0] # 静图
-      @aim_user[:avatar] = temp[1] # 动图
-    end
-
+    #@aim_user[:name] = params[:nickname] || @aim_user[:name]
+    #@aim_user[:birthday] = params[:birthday].empty? ? @aim_user[:birthday] :
+    #Time.parse(params[:birthday])
+    #@aim_user[:sex] = params[:sex] || @aim_user[:sex]
+    #@aim_user[:orientation] = params[:orientation] || @aim_user[:orientation]
+    #if params[:avatar].empty?||params[:first_frame].empty?
+    #else
+    #  temp = AppUser.upload_image(params[:user_id], params[:first_frame],
+    #    params[:first_frame_format], params[:avatar], params[:avatar_format])
+    #  @aim_user[:avatar_frame] = temp[0] # 静图
+    #  @aim_user[:avatar] = temp[1] # 动图
+    #end
     @aim_user[:school] = params[:school] || @aim_user[:school]
     @aim_user[:language] = params[:language] || @aim_user[:language]
-    @aim_user[:working_area] = params[:working_area] || @aim_user[:working_area]
-    @aim_user[:hobby] = params[:hobby] || @aim_user[:hobby] # 具体什么机制TBD
+    @aim_user[:working_area] = params[:profession] || @aim_user[:working_area]
+    @aim_user[:hobby] = params[:hobby] || @aim_user[:hobby]
     @aim_user[:signature] = params[:signature] || @aim_user[:signature]
     @aim_user.save!
   end
 
-  def self.update_my_avatar
+  def self.fetch_my_picture_wall(user_id)
+    images = []
+    path = "uploaded_data/avatars/#{user_id}/"
+    Find.find(path).each do |f|
+      # File.directory? // 判断当前
+      if File.file?(f) && File.extname(f).eql?(".jpg")
+        images << {"picture_name":File.basename(f), "first_frame":Base64.strict_encode64(File.read(f))}
+      else
+      end
+    end
+    result = {}
+    result[:images] = images
+    @current_user = AppUser.includes(:pairing_info).find_by(user_id: user_id.to_i)
+    result[:avatar_name] = @current_user[:avatar].split('/').last.split(".").first
+    result[:rest_five_names] = @current_user.pairing_info[:rest_five]
+    result
+  end
+
+  def self.fetch_the_dynamic_image(user_id, image_name)
+    path = "uploaded_data/avatars/#{user_id}/" + image_name + ".mp4"
+    Base64.strict_encode64(File.read(path))
+  end
+
+  def self.update_my_avatar(user_id, video_name, image_name)
+    @aim_user = AppUser.includes(:pairing_info).find_by(user_id: user_id.to_i)
+    @aim_user[:avatar] = "uploaded_data/avatars/#{user_id}/" + video_name
+    @aim_user[:avatar_frame] = "uploaded_data/avatars/#{user_id}/" + image_name
+    #再见再也不见
+    @aim_user.pairing_info[:met_me] = []
+    @aim_user.pairing_info.save!
+    @aim_user.save!
+  end
+
+  def self.delete_images(user_id, image_names)
+    path = "./uploaded_data/avatars/#{:user_id}"
+    @aim_pairing_info = PairingInfo.find_by(user_id:user_id)
+    image_names.each do |f|
+      if @aim_pairing_info[:rest_five].include?(f)
+        @aim_pairing_info[:rest_five].delete(f)
+      end
+      File.delete(f + ".mp4")
+      File.delete(f + ".jpg")
+    end
+    @aim_pairing_info.save!
   end
 end

@@ -8,6 +8,7 @@ class CreateAppUsers < ActiveRecord::Migration[5.0]
       t.string :account_type
       t.string :token
     #系统生成辅助数据
+      t.string :device_token
       #t.boolean :activated, default: false
       #t.string :activation_token
       t.string :reset_token

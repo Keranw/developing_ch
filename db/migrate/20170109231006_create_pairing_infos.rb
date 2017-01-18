@@ -14,6 +14,8 @@ class CreatePairingInfos < ActiveRecord::Migration[5.0]
       t.integer :like_list, default: [], array:true
       #谁见过我
       t.integer :met_me, default: [], array:true
+      #已经是我的好友
+      t.integer :friend_list, default: [], array:true
       t.timestamps
     end
   end
