@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170118001957) do
     t.string   "password"
     t.string   "account_type"
     t.string   "token"
+    t.string   "device_token"
     t.string   "reset_token"
     t.datetime "reset_token_generated_time"
     t.string   "name",                       default: ""
@@ -40,34 +41,32 @@ ActiveRecord::Schema.define(version: 20170118001957) do
     t.date     "vip_purchase_date"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.string   "device_token"
     t.index ["user_id"], name: "index_app_users_on_user_id", unique: true, using: :btree
   end
 
   create_table "message_temps", force: :cascade do |t|
     t.integer  "from_id"
     t.integer  "to_id"
-    t.integer  "type"
+    t.integer  "msg_type"
     t.string   "content"
-    t.integer  "time_interval"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pairing_infos", force: :cascade do |t|
+    t.integer  "app_user_id"
     t.integer  "user_id"
     t.integer  "postcode"
     t.float    "longitude"
     t.float    "latitude"
-    t.integer  "met_me",      default: [],              array: true
+    t.string   "rest_five",   default: [],              array: true
     t.integer  "like",        default: 0
     t.integer  "dislike",     default: 0
     t.integer  "like_list",   default: [],              array: true
+    t.integer  "met_me",      default: [],              array: true
+    t.integer  "friend_list", default: [],              array: true
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "app_user_id"
-    t.string   "rest_five",   default: [],              array: true
-    t.integer  "friend_list", default: [],              array: true
   end
 
 end

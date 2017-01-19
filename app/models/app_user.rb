@@ -8,6 +8,7 @@ class AppUser < ApplicationRecord
     @new_user[:account_name] = params[:email]
     @new_user[:account_type] = 'Email'
     @new_user[:password] = params[:password]
+    @new_user[:device_token] = params[:device_token]
     #用户更新用于联系的email，冗余？
     @new_user[:email] = @new_user[:account_name]
     @new_user[:token] = SecureRandom.urlsafe_base64
@@ -40,6 +41,7 @@ class AppUser < ApplicationRecord
     @aim_user[:sex] = params[:sex]
     @aim_user[:not_interest] = params[:sex]
     image_count = 0
+    # 注册的时候可以上传几张？
     params[:images].each do |f|
       image_count += 1
       AppUser.upload_image(image_count, params[:user_id], f[:first_frame],
@@ -49,12 +51,16 @@ class AppUser < ApplicationRecord
       params[:first_frame_format], params[:avatar], params[:avatar_format])
     @aim_user[:avatar_frame] = temp[0] # 静图
     @aim_user[:avatar] = temp[1] # 动图
-    @aim_user.save!
-    #匹配信息表移入
-    @new_pairing_info = PairingInfo.new
-    @new_pairing_info[:app_user_id] = @aim_user[:id]
-    @new_pairing_info[:user_id] = @aim_user[:user_id]
-    @new_pairing_info.save!
+    # nickname的唯一性
+    if !AppUser.exists?(name: params[:nickname])
+      @aim_user.save!
+      @new_pairing_info = PairingInfo.new
+      @new_pairing_info[:app_user_id] = @aim_user[:id]
+      @new_pairing_info[:user_id] = @aim_user[:user_id]
+      @new_pairing_info.save!
+    else
+    end
+
   end
 
   def self.upload_image(count, user_id, image_bits, image_format, video_bits, video_format)
@@ -158,14 +164,14 @@ class AppUser < ApplicationRecord
   end
 
   def self.delete_images(user_id, image_names)
-    path = "./uploaded_data/avatars/#{:user_id}"
+    path = "./uploaded_data/avatars/#{user_id}/"
     @aim_pairing_info = PairingInfo.find_by(user_id:user_id)
     image_names.each do |f|
       if @aim_pairing_info[:rest_five].include?(f)
         @aim_pairing_info[:rest_five].delete(f)
       end
-      File.delete(f + ".mp4")
-      File.delete(f + ".jpg")
+      File.delete(path + f + ".mp4")
+      File.delete(path + f + ".jpg")
     end
     @aim_pairing_info.save!
   end

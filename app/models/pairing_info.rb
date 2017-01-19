@@ -33,9 +33,10 @@ class PairingInfo < ApplicationRecord
   def self.return_profile_with_gps(user_id, user_postcode)
     result = []
     @current_user = AppUser.includes(:pairing_info).find_by(user_id: user_id.to_i)
+    # where => 0.1.n
     temp_list_1 = PairingInfo.where(:postcode => user_postcode.to_i).to_a
-    #
     temp_list = temp_list_1 - [@current_user.pairing_info]
+    ##
     if !temp_list.empty?
       temp_list.each do |f|
         if !f[:met_me].include?(@current_user[:user_id]) &&
@@ -46,11 +47,13 @@ class PairingInfo < ApplicationRecord
         break if result.length > 19
       end
     end
+
     if result.length < 20
       #直接驻扎SQL语句
-      #temp_list_2 = PairingInfo.where("postcode < (#{user_postcode}+5) AND postcode > (#{user_postcode}-5)")
-      temp_list_2 = PairingInfo.order("updated_at desc").to_a
+      temp_list_2 = PairingInfo.where("postcode < (#{user_postcode}+5) AND postcode > (#{user_postcode}-5)")
+      #temp_list_2 = PairingInfo.order("updated_at desc").to_a
       temp_list = temp_list_2 - temp_list_1
+      ##
       if !temp_list.empty?
         temp_list.each do |f|
           if !f[:met_me].include?(@current_user[:user_id]) &&
@@ -85,25 +88,31 @@ class PairingInfo < ApplicationRecord
     @aim_pairing_info.save!
   end
 
+  ## 记这些
   def self.update_pair_result(user_id, aim_id, result)
     @aim_pairing_info = PairingInfo.find_by(user_id: aim_id)
     @aim_pairing_info[:met_me].push(user_id)
     #模拟器不分布尔和字符串
     if result == true || result == "true"
       @aim_pairing_info[:like] += 1
+      @my_pairing_info = PairingInfo.find_by(user_id: user_id)
       if !@aim_pairing_info[:like_list].include?(user_id)
-        # 目标还没喜欢我
         @aim_pairing_info[:like_list].push(user_id)
-      else
-        # 目标已经喜欢过我了
-        @my_pairing_info = PairingInfo.find_by(user_id: user_id)
-        @my_pairing_info[:friend_list].push(aim_id)
-        @my_pairing_info.save!
-        ## 通过推送服务，向自己推送加好友确认
-        MessageTemp.create(from_id:aim_id, to_id:user_id, msg_type:3, content:"")
-        @aim_pairing_info[:friend_list].push(user_id)
-        ## 通过推送服务，向对方推送加好友确认
-        MessageTemp.create(from_id:user_id, to_id:aim_id, msg_type:3, content:"")
+      end
+      if @my_pairing_info[:like_list].include?(aim_id) && @aim_pairing_info[:like_list].include?(user_id)
+         @aim_pairing_info[:like_list].delete(user_id)
+         @my_pairing_info[:like_list].delete(aim_id)
+         @aim_pairing_info[:met_me].delete(user_id)
+         @my_pairing_info[:met_me].delete(aim_id)
+         #MessageTemp.create_new_msg(aim_id, user_id, 3, "")
+         # 通过推送服务，向自己推送加好友确认
+         MessageTemp.push_a_match_result(user_id)
+         @aim_pairing_info[:friend_list].push(user_id)
+         @my_pairing_info[:friend_list].push(aim_id)
+         #MessageTemp.create_new_msg(user_id, aim_id, 3, "")
+         # 通过推送服务，向对方推送加好友确认
+         MessageTemp.push_a_match_result(aim_id)
+         @my_pairing_info.save!
       end
     else
       @aim_pairing_info[:dislike] += 1
@@ -111,6 +120,7 @@ class PairingInfo < ApplicationRecord
     @aim_pairing_info.save!
   end
 
+  # 记这些
   def self.update_like_result(user_id, aim_id, result)
     @my_pairing_info = PairingInfo.find_by(user_id: user_id)
     @my_pairing_info[:like_list].delete(aim_id.to_i)
@@ -118,12 +128,20 @@ class PairingInfo < ApplicationRecord
     ##模拟器不分布尔和字符串
     if result == true || result == "true"
       @aim_pairing_info[:like] += 1
+
       @my_pairing_info[:friend_list].push(aim_id)
-      ## 通过推送服务，向自己推送加好友确认
-      MessageTemp.create(from_id:aim_id, to_id:user_id, msg_type:3, content:"")
+      @aim_pairing_info[:like_list].delete(user_id)
+      @my_pairing_info[:like_list].delete(aim_id)
+      @aim_pairing_info[:met_me].delete(user_id)
+      @my_pairing_info[:met_me].delete(aim_id)
+
+      #MessageTemp.create_new_msg(aim_id, user_id, 3, "")
+      # 通过推送服务，向自己推送加好友确认
+      MessageTemp.push_a_match_result(user_id)
       @aim_pairing_info[:friend_list].push(user_id)
-      ## 通过推送服务，向目标推送加好友确认
-      MessageTemp.create(from_id:user_id, to_id:aim_id, msg_type:3, content:"")
+       #MessageTemp.create_new_msg(user_id, aim_id, 3, "")
+      # 通过推送服务，向目标推送加好友确认
+      MessageTemp.push_a_match_result(aim_id)
     else
       @aim_pairing_info[:dislike] += 1
     end
@@ -167,7 +185,7 @@ class PairingInfo < ApplicationRecord
     result[:first_frame] = Base64.strict_encode64(File.read(image_path))
     result
   end
-################################################################################
+
   def self.get_friend_list(user_id)
     result = []
     #获取索引

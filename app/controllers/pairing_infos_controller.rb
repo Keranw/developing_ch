@@ -7,7 +7,7 @@ class PairingInfosController < ApplicationController
     render json: {profiles:result}
   end
 
-  def get_more_profiles_with_gps
+  def get_more_profiles_with_gps ##
     # params user_id:int latitude:double longitude:double postcode:int
     PairingInfo.update_my_gps_info(params[:user_id], params[:latitude], params[:longitude], params[:postcode])
     result = PairingInfo.return_profile_with_gps(params[:user_id], params[:postcode])

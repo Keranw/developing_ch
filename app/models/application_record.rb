@@ -3,4 +3,5 @@ class ApplicationRecord < ActiveRecord::Base
   require 'find'
   require 'socket'
   require 'json'
+  require 'houston'
 end

@@ -5,6 +5,7 @@ class CreateMessageTemps < ActiveRecord::Migration[5.0]
       t.integer :to_id
       t.integer :msg_type
       t.string :content
+      t.integer :time_interval
 
       t.timestamps
     end

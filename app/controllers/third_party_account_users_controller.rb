@@ -1,7 +1,7 @@
 class ThirdPartyAccountUsersController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  def third_party_account_sign_in
+  def third_party_account_sign_in ##
     # params user_id(account_name):string, token:string, email:string,
     #        source:string, device_token:string
     ## B

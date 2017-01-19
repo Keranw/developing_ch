@@ -1,8 +1,8 @@
 class EmailAccountUsersController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  def email_account_sign_up
-    # params email:string, password:string
+  def email_account_sign_up ##
+    # params email:string, password:string, device_token:string
     params[:email] = params[:email].downcase
     ## B
     if AppUser.exists?(account_name: params[:email])
@@ -40,13 +40,14 @@ class EmailAccountUsersController < ApplicationController
     render json: result
   end
 
-  def email_account_reset_password
+  def email_account_reset_password ##
     # params email:string
     # 注释同上
     @aim_user = AppUser.find_by(account_name:params[:email].downcase)
     if @aim_user
       @aim_user.update_attribute(:reset_token, SecureRandom.urlsafe_base64)
       @aim_user.update_attribute(:reset_token_generated_time, DateTime.now + 1.hour)
+      # 平台host问题
       reset_url = 'http://'+ $host +'/pw_resetters/' + @aim_user[:reset_token] +
        '/edit?email=' + @aim_user[:email].split('@')[0] + '%40' + @aim_user[:email].split('@')[1]
       EmailMailer.reset_password_email(reset_url, @aim_user[:email].downcase).deliver_later

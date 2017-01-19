@@ -9,17 +9,32 @@ class ChatController < ApplicationController
   def get_messages
     #parms user_id:int
     result = MessageTemp.get_my_msgs(params[:user_id])
-    # 删除已经看过的信息
-    # MessageTemp.delete(result)
     render json: {messages:result}
+    # 删除已经看过的信息
+    MessageTemp.delete(result)
+  end
+
+  def get_friend_messages
+    #params user_id:int friend_id:int
+    result = MessageTemp.get_friend_messages(params[:user_id],params[:friend_id])
+    render json: {messages:result}
+    # 删除已经看过的信息
+    MessageTemp.delete(result)
   end
 
   def new_message
     #params from_id:int to_id:int msg_type:int content:string
-    MessageTemp.create_new_msg(params[:from_id], params[:to_id], params[:msg_type], params[:content])
-    ##通知to用户
-    result = {"result":true}
-    render json:result
+    @temp_user = AppUser.find_by(user_id:to_id)
+    if @temp_user[:friend_list].include?(from_id)
+      MessageTemp.create_new_msg(params[:from_id], params[:to_id], params[:msg_type], params[:content])
+      result = {"result":true}
+      render json:result
+      #通知to用户
+      MessageTemp.push_a_msg(params[:to_id])
+    else
+      result = {"result":false}
+      render json:result
+    end
   end
 
   def get_temp_image

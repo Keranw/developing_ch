@@ -43,4 +43,5 @@ Rails.application.routes.draw do
   post 'new_message' => 'chat#new_message'
   post 'get_messages' => 'chat#get_messages'
   post 'get_temp_image' => 'chat#get_temp_image'
+  post 'get_friend_messages' => 'chat#get_friend_messages'
 end

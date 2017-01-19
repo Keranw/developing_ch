@@ -34,9 +34,7 @@ class CreateAppUsers < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :app_users, :user_id, unique: true
-    #add_index :app_users, :account_name, unique: true => 登录名可改动么？
-
-
+    #add_index :app_users, :account_name, unique: true #登录名可改动么？
     #add_index :app_users, :name, unique: true
   end
 end
