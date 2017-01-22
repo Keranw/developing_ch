@@ -24,7 +24,7 @@ class ChatController < ApplicationController
 
   def new_message
     #params from_id:int to_id:int msg_type:int content:string
-    @temp_user = AppUser.find_by(user_id:to_id)
+    @temp_user = AppUser.find_by(user_id:params[:to_id])
     if @temp_user[:friend_list].include?(from_id)
       MessageTemp.create_new_msg(params[:from_id], params[:to_id], params[:msg_type], params[:content])
       result = {"result":true}
