@@ -66,8 +66,8 @@ class AppUser < ApplicationRecord
   def self.upload_image(count, user_id, image_bits, image_format, video_bits, video_format)
     #每调用一次上传一张图片
     current_time = Time.now.to_i.to_s + count.to_s
-    image_path = "uploaded_data/avatars/#{user_id}/" + current_time + image_format
-    video_path = "uploaded_data/avatars/#{user_id}/" + current_time + video_format
+    image_path = "uploaded_data/avatars/#{user_id}/" + current_time + '.jpg' ##
+    video_path = "uploaded_data/avatars/#{user_id}/" + current_time + '.mp4' ##
     FileUtils.mkdir_p "uploaded_data/avatars/#{user_id}/"
     AppUser.base64_tranlator(image_path, image_bits)
     AppUser.base64_tranlator(video_path, video_bits)
