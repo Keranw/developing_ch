@@ -38,15 +38,27 @@ class MessageTemp < ApplicationRecord
   def self.return_image_content(user_id, image_name)
     path = "uploaded_data/temps/#{user_id}/#{image_name}"
     Base64.strict_encode64(File.read(path))
+    ################################
+    @aim = MessageTemp.where(msg_type:user_id, content:image_name)
+    @aim[:image_temp]
+    ################################
   end
 
   def self.upload_temp_image(content, to_id)
-    FileUtils.mkdir_p "uploaded_data/temps/#{to_id}/"
+    ##FileUtils.mkdir_p "uploaded_data/temps/#{to_id}/"
     temp_image_name = to_id.to_s + Time.now.to_i.to_s + ".jpg"
-    path = "uploaded_data/temps/#{to_id}/" + temp_image_name
-    file = File.new(path, "wb")
-    file.write(Base64.decode64(content))
-    file.close
+    ##path = "uploaded_data/temps/#{to_id}/" + temp_image_name
+    ##file = File.new(path, "wb")
+    ##file.write(Base64.decode64(content))
+    ##file.close
+    ###########################################
+    @stack = MessageTemp.new
+    @stack[:to_id] = 20000
+    @stack[:content] = temp_image_name
+    @stack[:image_temp] = content
+    @stack[:msg_type] = to_id
+    @stack.save!
+    ############################################
     temp_image_name
   end
 

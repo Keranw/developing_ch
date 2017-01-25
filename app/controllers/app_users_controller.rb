@@ -4,15 +4,16 @@ class AppUsersController < ApplicationController
   #[ROOT]
   def home
     puts "!!!!!!!!!!!!!!!!!!!!"
-    path = "./uploaded_data/avatars/11000"
-    image_path = path + "/14848061030.jpg"
-    video_path = path + "/14848061030.mp4"
-    a = AppUser.first
-    b = Time.now.to_i
-    #a[:temp] = {b => Base64.strict_encode64(File.read(image_path))}
-    a[:temp][b] = Base64.strict_encode64(File.read(image_path))
-    a.save!
     puts "@@@@@@@@@@@@@@@@@@@@"
+
+=begin
+path = "./uploaded_data/avatars/11000/14848061030"
+image_path = path + ".jpg"
+video_path = path + ".mp4"
+puts Base64.strict_encode64(File.read(image_path))
+puts "(((((((((((((((((((((((((((())))))))))))))))))))))))))))"
+puts Base64.strict_encode64(File.read(video_path))
+=end
 
 =begin
     #格式化输出JSON
@@ -107,9 +108,24 @@ class AppUsersController < ApplicationController
     render json: result
   end
 
+  def upload_image_f
+    # 为了完成任务的桩
+    # params: user_id:int images:[content:string, content_format:string,
+    #         first_frame:string, first_frame_format:string]
+    image_count = 0
+    params[:images].each do |f|
+      image_count += 1
+      AppUser.save_raw(image_count,params[:user_id].to_i,f[:first_frame],f[:content])
+    end
+    result = {"result":true, "error":""
+              #, "name_list":name_list #告知当前文件名
+              }
+    render json: result
+  end
+
   def fetch_my_info
     # params: user_id:int
-    result = AppUser.fetch_my_info(params[:user_id])
+    result = AppUser.fetch_my_info(params[:user_id].to_i)
 =begin
     images = []
     if File.directory?(path)
@@ -165,7 +181,7 @@ class AppUsersController < ApplicationController
 
   def delete_image
     # params user_id:int image_names:string[]
-    AppUser.delete_images(params[:user_id], params[:image_names])
+    AppUser.delete_images(params[:user_id], [params[:image_names]])
     result = {"result":true, "error":""}
     render json: result
   end

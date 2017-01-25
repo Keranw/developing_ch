@@ -3,7 +3,7 @@ class PairingInfosController < ApplicationController
 
   def get_more_profiles_without_gps
     # params user_id:int
-    result = PairingInfo.return_profile_without_gps(params[:user_id])
+    result = PairingInfo.return_profile_without_gps(params[:user_id].to_i)
     render json: {profiles:result}
   end
 

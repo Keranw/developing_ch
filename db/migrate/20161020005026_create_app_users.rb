@@ -30,8 +30,8 @@ class CreateAppUsers < ActiveRecord::Migration[5.0]
       t.string :signature, default: ""
       t.boolean :is_vip, default: false
       t.date :vip_purchase_date
-      t.jsonb :temp, default: {}
-
+      t.jsonb :temp_image, default: {}
+      t.jsonb :temp_video, default: {}
       t.timestamps
     end
     add_index :app_users, :user_id, unique: true

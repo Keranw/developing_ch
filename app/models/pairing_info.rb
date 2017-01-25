@@ -24,9 +24,14 @@ class PairingInfo < ApplicationRecord
     result[:user_id] = user_info[:user_id]
     result[:nickname] = user_info[:name]
     result[:dynamic_picture_amount] = user_info[:avatar_count]
-    result[:dynamic_picture] = Base64.strict_encode64(File.read(user_info[:avatar]))
-    result[:first_frame] = Base64.strict_encode64(File.read(user_info[:avatar_frame]))
-    result[:dynamic_picture_name] = user_info[:avatar].split('/').last
+    ##result[:dynamic_picture] = Base64.strict_encode64(File.read(user_info[:avatar]))
+    ##result[:first_frame] = Base64.strict_encode64(File.read(user_info[:avatar_frame]))
+    ##result[:dynamic_picture_name] = user_info[:avatar].split('/').last
+    #############################################
+    result[:dynamic_picture] = user_info[:temp_video][user_info[:avatar]]
+    result[:first_frame] = user_info[:temp_image][user_info[:avatar_frame]]
+    result[:dynamic_picture_name] = user_info[:avatar]
+    #############################################
     result
   end
 
@@ -73,10 +78,15 @@ class PairingInfo < ApplicationRecord
     result[:nickname] = user_info[:name]
     result[:longitude] = pairing_info[:longitude]
     result[:latitude] = pairing_info[:latitude]
-    result[:dynamic_picture_name] = user_info[:avatar].split('/').last
     result[:dynamic_picture_amount] = user_info[:avatar_count]
-    result[:dynamic_picture] = Base64.strict_encode64(File.read(user_info[:avatar]))
-    result[:first_frame] = Base64.strict_encode64(File.read(user_info[:avatar_frame]))
+    ##result[:dynamic_picture_name] = user_info[:avatar].split('/').last
+    ##result[:dynamic_picture] = Base64.strict_encode64(File.read(user_info[:avatar]))
+    ##result[:first_frame] = Base64.strict_encode64(File.read(user_info[:avatar_frame]))
+    #############################################
+    result[:dynamic_picture] = user_info[:temp_video][user_info[:avatar]]
+    result[:first_frame] = user_info[:temp_image][user_info[:avatar_frame]]
+    result[:dynamic_picture_name] = user_info[:avatar]
+    #############################################
     result
   end
 
@@ -163,8 +173,12 @@ class PairingInfo < ApplicationRecord
   def self.return_rest_five_images(aim_id)
     result = []
     path = "./uploaded_data/avatars/#{aim_id}/"
-    @aim_pairing_info = PairingInfo.find_by(user_id: aim_id)
+    ##@aim_pairing_info = PairingInfo.find_by(user_id: aim_id)
+    ##################################
+    @aim_pairing_info = PairingInfo.includes(:app_user).find_by(user_id: aim_id.to_i)
+    ###################################
     # 现在假设存的是文件识别名=>选定方法需要上传文件名=>照片墙需要知道文件名
+=begin
     if File.directory?(path)
       @aim_pairing_info[:rest_five].each do |f|
         video_path = path + f + '.mp4'
@@ -175,7 +189,17 @@ class PairingInfo < ApplicationRecord
         break if result.count > 4
       end
     end
-    puts result.count
+=end
+    puts @aim_pairing_info
+    @aim_pairing_info[:rest_five].each do |f|
+      temp_j = {}
+      image_key = f + '.jpg'
+      video_key = f + '.mp4'
+      temp_j[:dynamic_picture] = @aim_pairing_info.app_user[:temp_video][video_key]
+      temp_j[:dynamic_picture_name] = video_key
+      temp_j[:first_frame] = @aim_pairing_info.app_user[:temp_image][image_key]
+      result << temp_j
+    end
     result
   end
   def self.assemble_rest_five(video_path, video_name, image_path)
@@ -196,8 +220,10 @@ class PairingInfo < ApplicationRecord
       @temp_user = AppUser.find_by(user_id:f)
       temp[:friend_id] = f
       temp[:friend_name] = @temp_user[:name]
-      temp[:friend_profile] = Base64.strict_encode64(File.read(@temp_user[:avatar_frame]))
-      temp[:friend_profile_name] = @temp_user[:avatar_frame].split('/').last
+      ##temp[:friend_profile] = Base64.strict_encode64(File.read(@temp_user[:avatar_frame]))
+      ##temp[:friend_profile_name] = @temp_user[:avatar_frame].split('/').last
+      temp[:friend_profile_name] = @temp_user[:avatar_frame]
+      temp[:friend_profile] = @temp_user[:temp_image][@temp_user[:avatar_frame]]
       result << temp
     end
     result

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 ##app_user#######################################################################
   post 'auto_login' => 'app_users#auto_login'
   post 'nickname_check' => 'app_users#check_nickname_existence'
-  post 'upload_dynamic_picture' => 'app_users#upload_image'
+  post 'upload_dynamic_picture' => 'app_users#upload_image_f'###
   post 'user_profile_complete' => 'app_users#user_profile_complete'
   post 'fetch_my_info' => 'app_users#fetch_my_info'
   post 'manage_my_account' => 'app_users#manage_my_account'

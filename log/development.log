@@ -1,2 +1,608 @@
   [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (13.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/" for 127.0.0.1 at 2017-01-26 01:26:30 +0800
+Started GET "/" for 127.0.0.1 at 2017-01-26 01:26:31 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:AppUsersController> at /Users/Keran/Workspace/developing_ch/app/controllers/app_users_controller.rb:2)
+Processing by AppUsersController#home as HTML
+Processing by AppUsersController#home as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+Errno::ENOENT (No such file or directory @ rb_sysopen - /uploaded_data/avatars/11000.jpg):
+  
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - /uploaded_data/avatars/11000.jpg):
+app/controllers/app_users_controller.rb:10:in `read'
+  
+app/controllers/app_users_controller.rb:10:in `home'
+app/controllers/app_users_controller.rb:10:in `read'
+app/controllers/app_users_controller.rb:10:in `home'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.1ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.8ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (121.5ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (164.6ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 01:27:14 +0800
+Processing by AppUsersController#home as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - /uploaded_data/avatars/11000/14848061030.jpg):
+  
+app/controllers/app_users_controller.rb:10:in `read'
+app/controllers/app_users_controller.rb:10:in `home'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (63.2ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 01:27:15 +0800
+Processing by AppUsersController#home as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - /uploaded_data/avatars/11000/14848061030.jpg):
+  
+app/controllers/app_users_controller.rb:10:in `read'
+app/controllers/app_users_controller.rb:10:in `home'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.1ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 01:27:40 +0800
+Processing by AppUsersController#home as HTML
+  Rendering app_users/home.html.erb within layouts/application
+  Rendered app_users/home.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 572ms (Views: 521.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/email_account_signup" for 127.0.0.1 at 2017-01-26 01:32:32 +0800
+Processing by EmailAccountUsersController#email_account_sign_up as */*
+  Parameters: {"email"=>"a@aa.a", "password"=>"[FILTERED]", "device_token"=>"asdf"}
+  [1m[36mAppUser Exists (5.9ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."account_name" = $1 LIMIT $2[0m  [["account_name", "a@aa.a"], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT MAX("app_users"."id") FROM "app_users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "app_users" ("user_id", "account_name", "password", "account_type", "token", "device_token", "reset_token_generated_time", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["user_id", 10003], ["account_name", "a@aa.a"], ["password", "qqqwww"], ["account_type", "Email"], ["token", "Yf_mWTt8vfUaOU4OhIT9RA"], ["device_token", "asdf"], ["reset_token_generated_time", 2017-01-25 17:32:32 UTC], ["email", "a@aa.a"], ["created_at", 2017-01-25 17:32:32 UTC], ["updated_at", 2017-01-25 17:32:32 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 129ms (Views: 0.4ms | ActiveRecord: 41.5ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:38:47 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwer", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (1.2ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 124ms (ActiveRecord: 2.0ms)
+
+
+  
+NoMethodError (undefined method `each' for "[]":String):
+  
+app/models/app_user.rb:46:in `user_profile_complete'
+app/controllers/app_users_controller.rb:83:in `user_profile_complete'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.4ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.6ms)
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:40:03 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwer", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (1.0ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (undefined local variable or method `image_count' for #<Class:0x007f909f3057a0>):
+  
+app/models/app_user.rb:89:in `save_raw'
+app/models/app_user.rb:57:in `user_profile_complete'
+app/controllers/app_users_controller.rb:83:in `user_profile_complete'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.9ms)
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:40:37 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwer", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.5ms)
+
+
+  
+TypeError (no implicit conversion of Fixnum into String):
+  
+app/models/app_user.rb:89:in `+'
+app/models/app_user.rb:89:in `save_raw'
+app/models/app_user.rb:57:in `user_profile_complete'
+app/controllers/app_users_controller.rb:83:in `user_profile_complete'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (71.9ms)
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:41:16 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwer", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 1], ["updated_at", 2017-01-25 17:41:16 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwer"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "name" = $1, "birthday" = $2, "sex" = $3, "not_interest" = $4, "avatar_frame" = $5, "avatar" = $6, "updated_at" = $7 WHERE "app_users"."id" = $8[0m  [["name", "qwer"], ["birthday", Sat, 27 Jan 1990], ["sex", 1], ["not_interest", 1], ["avatar_frame", "14853660760.jpg"], ["avatar", "14853660760.mp4"], ["updated_at", 2017-01-25 17:41:16 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "pairing_infos" ("app_user_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["app_user_id", 3], ["user_id", 10003], ["created_at", 2017-01-25 17:41:16 UTC], ["updated_at", 2017-01-25 17:41:16 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 151ms (Views: 0.3ms | ActiveRecord: 16.2ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:42:30 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwer", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (1.3ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.6ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 2], ["updated_at", 2017-01-25 17:42:30 UTC], ["id", 3]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwer"], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.6ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:43:05 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwerq", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (2.1ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 3], ["updated_at", 2017-01-25 17:43:05 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwerq"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "name" = $1, "avatar_frame" = $2, "avatar" = $3, "updated_at" = $4 WHERE "app_users"."id" = $5[0m  [["name", "qwerq"], ["avatar_frame", "14853661850.jpg"], ["avatar", "14853661850.mp4"], ["updated_at", 2017-01-25 17:43:05 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 6.4ms)
+
+
+  
+ActiveRecord::PreparedStatementCacheExpired (ERROR:  cached plan must not change result type
+):
+  
+app/models/app_user.rb:68:in `user_profile_complete'
+app/controllers/app_users_controller.rb:83:in `user_profile_complete'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (69.3ms)
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:47:20 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwerq", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.9ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.8ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 4], ["updated_at", 2017-01-25 17:47:20 UTC], ["id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwerq"], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.9ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:47:41 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qw", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 5], ["updated_at", 2017-01-25 17:47:41 UTC], ["id", 3]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qw"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "app_users" SET "name" = $1, "avatar_frame" = $2, "avatar" = $3, "updated_at" = $4 WHERE "app_users"."id" = $5[0m  [["name", "qw"], ["avatar_frame", "14853664610.jpg"], ["avatar", "14853664610.mp4"], ["updated_at", 2017-01-25 17:47:41 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "pairing_infos" ("app_user_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["app_user_id", 3], ["user_id", 10003], ["created_at", 2017-01-25 17:47:41 UTC], ["updated_at", 2017-01-25 17:47:41 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:49:22 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qw", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 6], ["updated_at", 2017-01-25 17:49:22 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qw"], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 36ms (Views: 0.3ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:49:34 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwe", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "avatar_count" = $1, "updated_at" = $2 WHERE "app_users"."id" = $3[0m  [["avatar_count", 7], ["updated_at", 2017-01-25 17:49:34 UTC], ["id", 3]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwe"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "app_users" SET "name" = $1, "avatar_frame" = $2, "avatar" = $3, "updated_at" = $4 WHERE "app_users"."id" = $5[0m  [["name", "qwe"], ["avatar_frame", "14853665740.jpg"], ["avatar", "14853665740.mp4"], ["updated_at", 2017-01-25 17:49:34 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "pairing_infos" ("app_user_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["app_user_id", 3], ["user_id", 10003], ["created_at", 2017-01-25 17:49:34 UTC], ["updated_at", 2017-01-25 17:49:34 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 0.3ms | ActiveRecord: 14.6ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:50:52 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwe", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "app_users" SET "temp_image" = $1, "temp_video" = $2, "avatar_count" = $3, "updated_at" = $4 WHERE "app_users"."id" = $5[0m  [["temp_image", "{\"14853666520.jpg\":\"thisismyfirstframe\"}"], ["temp_video", "{\"14853666520.mp4\":\"thisismyavatar\"}"], ["avatar_count", 8], ["updated_at", 2017-01-25 17:50:52 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwe"], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 52ms (Views: 0.2ms | ActiveRecord: 10.5ms)
+
+
+Started POST "/user_profile_complete" for 127.0.0.1 at 2017-01-26 01:51:52 +0800
+Processing by AppUsersController#user_profile_complete as */*
+  Parameters: {"user_id"=>"10003", "nickname"=>"qwer", "birthday"=>"19900127", "sex"=>"1", "avatar"=>"thisismyavatar", "avatar_format"=>".mp4", "first_frame"=>"thisismyfirstframe", "first_frame_format"=>".jpg", "images"=>"[]"}
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "app_users" SET "temp_image" = $1, "temp_video" = $2, "avatar_count" = $3, "updated_at" = $4 WHERE "app_users"."id" = $5[0m  [["temp_image", "{\"14853666520.jpg\":\"thisismyfirstframe\",\"14853667120.jpg\":\"thisismyfirstframe\"}"], ["temp_video", "{\"14853666520.mp4\":\"thisismyavatar\",\"14853667120.mp4\":\"thisismyavatar\"}"], ["avatar_count", 9], ["updated_at", 2017-01-25 17:51:52 UTC], ["id", 3]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "app_users" WHERE "app_users"."name" = $1 LIMIT $2[0m  [["name", "qwer"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "app_users" SET "name" = $1, "avatar_frame" = $2, "avatar" = $3, "updated_at" = $4 WHERE "app_users"."id" = $5[0m  [["name", "qwer"], ["avatar_frame", "14853667120.jpg"], ["avatar", "14853667120.mp4"], ["updated_at", 2017-01-25 17:51:52 UTC], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pairing_infos" ("app_user_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["app_user_id", 3], ["user_id", 10003], ["created_at", 2017-01-25 17:51:52 UTC], ["updated_at", 2017-01-25 17:51:52 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAppUser Load (0.3ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 0.4ms | ActiveRecord: 11.2ms)
+
+
+Started POST "/fetch_my_info" for 127.0.0.1 at 2017-01-26 01:59:34 +0800
+Processing by AppUsersController#fetch_my_info as */*
+  Parameters: {"user_id"=>"10003"}
+  [1m[36mAppUser Load (0.3ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mPairingInfo Load (1.4ms)[0m  [1m[34mSELECT "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."app_user_id" = 3[0m
+Completed 200 OK in 79ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/fetch_my_info" for 127.0.0.1 at 2017-01-26 02:01:09 +0800
+Processing by AppUsersController#fetch_my_info as */*
+  Parameters: {"user_id"=>"10003"}
+  [1m[36mAppUser Load (0.3ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mPairingInfo Load (0.5ms)[0m  [1m[34mSELECT "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."app_user_id" = 3[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/fetch_my_picture_wall" for 127.0.0.1 at 2017-01-26 02:03:29 +0800
+Processing by AppUsersController#fetch_my_picture_wall as */*
+  Parameters: {"user_id"=>"10003"}
+  [1m[36mAppUser Load (0.8ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mPairingInfo Load (0.8ms)[0m  [1m[34mSELECT "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."app_user_id" = 3[0m
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/fetch_the_dynamic_image" for 127.0.0.1 at 2017-01-26 02:05:52 +0800
+Processing by AppUsersController#fetch_the_dynamic_image as */*
+  Parameters: {"user_id"=>"10003", "image_name"=>"14853666520"}
+  [1m[36mAppUser Load (0.3ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/fetch_the_dynamic_image" for 127.0.0.1 at 2017-01-26 02:05:58 +0800
+Processing by AppUsersController#fetch_the_dynamic_image as */*
+  Parameters: {"user_id"=>"10003", "image_name"=>"14853667120"}
+  [1m[36mAppUser Load (0.6ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/fetch_the_dynamic_image" for 127.0.0.1 at 2017-01-26 02:06:29 +0800
+Processing by AppUsersController#fetch_the_dynamic_image as */*
+  Parameters: {"user_id"=>"10003", "image_name"=>"14853667120"}
+  [1m[36mAppUser Load (0.3ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 44ms (Views: 0.2ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/fetch_the_dynamic_image" for 127.0.0.1 at 2017-01-26 02:06:58 +0800
+Processing by AppUsersController#fetch_the_dynamic_image as */*
+  Parameters: {"user_id"=>"10003", "image_name"=>"14853667120"}
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/fetch_the_dynamic_image" for 127.0.0.1 at 2017-01-26 02:09:42 +0800
+Processing by AppUsersController#fetch_the_dynamic_image as */*
+  Parameters: {"user_id"=>"10003", "image_names"=>"[\"14853666520\"]"}
+  [1m[36mAppUser Load (0.6ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `+' for nil:NilClass):
+  
+app/models/app_user.rb:189:in `fetch_the_dynamic_image'
+app/controllers/app_users_controller.rb:170:in `fetch_the_dynamic_image'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.8ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (77.6ms)
+Started POST "/delete_image" for 127.0.0.1 at 2017-01-26 02:10:30 +0800
+Processing by AppUsersController#delete_image as */*
+  Parameters: {"user_id"=>"10003", "image_names"=>"[\"14853666520\"]"}
+  [1m[36mPairingInfo Load (0.5ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE "app_users"."id" = 3[0m
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 5.3ms)
+
+
+  
+NoMethodError (undefined method `each' for "[\"14853666520\"]":String):
+  
+app/models/app_user.rb:223:in `delete_images'
+app/controllers/app_users_controller.rb:184:in `delete_image'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.7ms)
+Started POST "/delete_image" for 127.0.0.1 at 2017-01-26 02:11:12 +0800
+Processing by AppUsersController#delete_image as */*
+  Parameters: {"user_id"=>"10003", "image_names"=>"14853666520"}
+  [1m[36mPairingInfo Load (0.7ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.6ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE "app_users"."id" = 3[0m
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/models/app_user.rb:229:in `block in delete_images'
+app/models/app_user.rb:223:in `each'
+app/models/app_user.rb:223:in `delete_images'
+app/controllers/app_users_controller.rb:184:in `delete_image'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (77.2ms)
+Started POST "/delete_image" for 127.0.0.1 at 2017-01-26 02:12:33 +0800
+Processing by AppUsersController#delete_image as */*
+  Parameters: {"user_id"=>"10003", "image_names"=>"14853666520"}
+  [1m[36mPairingInfo Load (0.6ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE "app_users"."id" = 3[0m
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/models/app_user.rb:231:in `block in delete_images'
+app/models/app_user.rb:223:in `each'
+app/models/app_user.rb:223:in `delete_images'
+app/controllers/app_users_controller.rb:184:in `delete_image'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.4ms)
+Started POST "/delete_image" for 127.0.0.1 at 2017-01-26 02:13:06 +0800
+Processing by AppUsersController#delete_image as */*
+  Parameters: {"user_id"=>"10003", "image_names"=>"14853666520"}
+  [1m[36mPairingInfo Load (0.4ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE "app_users"."id" = 3[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.5ms)
+
+
+  
+NoMethodError (undefined method `save!' for nil:NilClass):
+  
+app/models/app_user.rb:234:in `delete_images'
+app/controllers/app_users_controller.rb:184:in `delete_image'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.0ms)
+Started POST "/delete_image" for 127.0.0.1 at 2017-01-26 02:13:48 +0800
+Processing by AppUsersController#delete_image as */*
+  Parameters: {"user_id"=>"10003", "image_names"=>"14853666520"}
+  [1m[36mPairingInfo Load (0.4ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.6ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE "app_users"."id" = 3[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "app_users" SET "temp_image" = $1, "temp_video" = $2, "updated_at" = $3 WHERE "app_users"."id" = $4[0m  [["temp_image", "{\"14853667120.jpg\":\"thisismyfirstframe\"}"], ["temp_video", "{\"14853667120.mp4\":\"thisismyavatar\"}"], ["updated_at", 2017-01-25 18:13:48 UTC], ["id", 3]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 52ms (Views: 0.4ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/get_more_profiles_without_gps" for 127.0.0.1 at 2017-01-26 02:50:34 +0800
+Processing by PairingInfosController#get_more_profiles_without_gps as */*
+  Parameters: {"user_id"=>"10003"}
+  [1m[36mAppUser Load (0.8ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mPairingInfo Load (1.0ms)[0m  [1m[34mSELECT "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."app_user_id" = 3[0m
+  [1m[36mAppUser Load (2.6ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE (birthday is not null) ORDER BY updated_at desc[0m
+  [1m[36mPairingInfo Load (0.4ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."app_user_id" = $1 LIMIT $2[0m  [["app_user_id", 1], ["LIMIT", 1]]
+  [1m[36mPairingInfo Load (0.3ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."app_user_id" = $1 LIMIT $2[0m  [["app_user_id", 2], ["LIMIT", 1]]
+Completed 200 OK in 87ms (Views: 0.9ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/get_rest_dynamic_photos" for 127.0.0.1 at 2017-01-26 02:56:13 +0800
+Processing by PairingInfosController#get_rest_dynamic_photos as */*
+  Parameters: {"user_id"=>"10001"}
+  [1m[36mPairingInfo Load (0.6ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 0], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/models/pairing_info.rb:193:in `return_rest_five_images'
+app/controllers/pairing_infos_controller.rb:39:in `get_rest_dynamic_photos'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.0ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.0ms)
+Started POST "/get_rest_dynamic_photos" for 127.0.0.1 at 2017-01-26 02:57:45 +0800
+Processing by PairingInfosController#get_rest_dynamic_photos as */*
+  Parameters: {"user_id"=>"10001"}
+  [1m[36mPairingInfo Load (0.4ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 0], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/models/pairing_info.rb:194:in `return_rest_five_images'
+app/controllers/pairing_infos_controller.rb:39:in `get_rest_dynamic_photos'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (72.2ms)
+Started POST "/get_rest_dynamic_photos" for 127.0.0.1 at 2017-01-26 02:58:52 +0800
+Processing by PairingInfosController#get_rest_dynamic_photos as */*
+  Parameters: {"user_id"=>"10001"}
+  [1m[36mPairingInfo Load (0.3ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 0], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/models/pairing_info.rb:195:in `return_rest_five_images'
+app/controllers/pairing_infos_controller.rb:39:in `get_rest_dynamic_photos'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (63.6ms)
+Started POST "/get_rest_dynamic_photos" for 127.0.0.1 at 2017-01-26 02:59:19 +0800
+Processing by PairingInfosController#get_rest_dynamic_photos as */*
+  Parameters: {"user_id"=>"10001"}
+  [1m[36mPairingInfo Load (0.3ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 0], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/models/pairing_info.rb:196:in `return_rest_five_images'
+app/controllers/pairing_infos_controller.rb:39:in `get_rest_dynamic_photos'
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.3ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Keran/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (70.0ms)
+Started POST "/get_rest_dynamic_photos" for 127.0.0.1 at 2017-01-26 03:00:16 +0800
+Processing by PairingInfosController#get_rest_dynamic_photos as */*
+  Parameters: {"aim_id"=>"10001"}
+  [1m[36mPairingInfo Load (0.4ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10001], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.7ms)[0m  [1m[34mSELECT "app_users".* FROM "app_users" WHERE "app_users"."id" = 1[0m
+Completed 200 OK in 53ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/get_friend_list" for 127.0.0.1 at 2017-01-26 03:02:18 +0800
+Processing by ChatController#get_friend_list as */*
+  Parameters: {"user_id"=>"10003"}
+  [1m[36mPairingInfo Load (0.3ms)[0m  [1m[34mSELECT  "pairing_infos".* FROM "pairing_infos" WHERE "pairing_infos"."user_id" = $1 LIMIT $2[0m  [["user_id", 10003], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.5ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10001], ["LIMIT", 1]]
+  [1m[36mAppUser Load (0.4ms)[0m  [1m[34mSELECT  "app_users".* FROM "app_users" WHERE "app_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 10002], ["LIMIT", 1]]
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+

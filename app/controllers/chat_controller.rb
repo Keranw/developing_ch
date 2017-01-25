@@ -2,7 +2,7 @@ class ChatController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def get_friend_list
     #params user_id:int
-    result = PairingInfo.get_friend_list(params[:user_id])
+    result = PairingInfo.get_friend_list(params[:user_id].to_i)
     render json: {friends:result}
   end
 
