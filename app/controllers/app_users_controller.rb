@@ -4,6 +4,13 @@ class AppUsersController < ApplicationController
   #[ROOT]
   def home
     puts "!!!!!!!!!!!!!!!!!!!!"
+    path = "./uploaded_data/avatars/11000"
+    image_path = path + "/14848061030.jpg"
+    video_path = path + "/14848061030.mp4"
+    a = AppUser.first
+    a[:temp]= a[:temp] + Base64.strict_encode64(File.read(image_path))
+    a.save!
+    puts a[:temp].length
     puts "@@@@@@@@@@@@@@@@@@@@"
 
 =begin
