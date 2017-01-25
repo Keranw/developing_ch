@@ -8,9 +8,10 @@ class AppUsersController < ApplicationController
     image_path = path + "/14848061030.jpg"
     video_path = path + "/14848061030.mp4"
     a = AppUser.first
-    a[:temp]= a[:temp] + Base64.strict_encode64(File.read(image_path))
+    b = Time.now.to_i
+    #a[:temp] = {b => Base64.strict_encode64(File.read(image_path))}
+    a[:temp][b] = Base64.strict_encode64(File.read(image_path))
     a.save!
-    puts a[:temp].length
     puts "@@@@@@@@@@@@@@@@@@@@"
 
 =begin
