@@ -26,7 +26,8 @@ class MessageTemp < ApplicationRecord
     when 2
       @new_message[:content] = MessageTemp.upload_temp_image(content, to_id)
     when 4
-      @temp_info = PairingInfo.find_by(user_id:from_id)[:friend_list].delete(to_id)
+      @temp_info = PairingInfo.find_by(user_id:from_id)
+      @temp_info[:friend_list].delete(to_id)
       @temp_info.save!
       @new_message[:content] = "You are removed..."
     else
